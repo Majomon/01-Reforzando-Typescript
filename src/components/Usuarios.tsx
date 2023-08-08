@@ -10,11 +10,34 @@ export const Usuarios = () => {
     reqResApi
       .get<ReqResListado>("/users")
       .then((resp) => {
-        console.log(resp.data.data);
+        setUsuarios(resp.data.data);
       })
       .catch((err) => console.log(err));
   }, []);
 
+  const renderItem = ({
+    id,
+    email,
+    first_name,
+    last_name,
+    avatar,
+  }: Usuario) => {
+    return (
+      <tr key={id.toString()}>
+        <th>
+          <img
+            src={avatar}
+            alt={first_name}
+            style={{ width: 50, borderRadius: 100 }}
+          />
+        </th>
+        <th>
+          {first_name} {last_name}
+        </th>
+        <th>{email}</th>
+      </tr>
+    );
+  };
   return (
     <>
       <h3>Usuarios:</h3>
@@ -26,8 +49,9 @@ export const Usuarios = () => {
             <th>Email</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>{usuarios.map((usuario) => renderItem(usuario))}</tbody>
       </table>
+      <button className="btn btn-primary">Siguientes</button>
     </>
   );
 };
