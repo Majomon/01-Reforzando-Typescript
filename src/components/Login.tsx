@@ -1,4 +1,24 @@
+import { useReducer } from "react";
+
+interface AuthState {
+  validando: boolean;
+  token: string | null;
+  username: string;
+  nombre: string;
+}
+
+const initialState = {
+  validando: true,
+  token: null,
+  username: "",
+  nombre: "",
+};
+
+const authReducer = (): AuthState => {};
+
 export const Login = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
   return (
     <>
       <h3>Login</h3>
