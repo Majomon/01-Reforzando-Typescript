@@ -14,7 +14,11 @@ const initialState = {
   nombre: "",
 };
 
-const authReducer = (): AuthState => {};
+type AuthAction = {
+  type: "logout";
+};
+
+const authReducer = (state: AuthState, action): AuthState => {};
 
 export const Login = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
