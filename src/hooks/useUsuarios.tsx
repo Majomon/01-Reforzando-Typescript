@@ -21,9 +21,8 @@ export const useUsuarios = () => {
 
     if (resp.data.data.length > 0) {
       setUsuarios(resp.data.data);
-      paginaRef.current++;
-      console.log(paginaRef.current);
     } else {
+      paginaRef.current--;
       alert("No hay más registros");
     }
 
@@ -33,8 +32,21 @@ export const useUsuarios = () => {
         .catch((err) => console.log(err)); */
   };
 
+  const pagSiguiente = () => {
+    paginaRef.current++;
+    cargarUsuarios();
+  };
+
+  const pagAnterior = () => {
+    if (paginaRef.current > 1) {
+      paginaRef.current--;
+      cargarUsuarios();
+    }
+  };
+
   return {
     usuarios,
-    cargarUsuarios,
+    pagSiguiente,
+    pagAnterior,
   };
 };
