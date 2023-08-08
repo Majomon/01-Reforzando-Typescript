@@ -9,6 +9,9 @@ export const TiposBasicos = () => {
   // Para un arreglo de Números
   const listaNum: number[] = [1, 2, 3, 4];
 
+  //errores
+  /*   poderes.push(1) */
+
   return (
     <>
       <h3>Tipos Básicos</h3>
